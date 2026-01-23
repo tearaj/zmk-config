@@ -27,6 +27,19 @@
         };
     };
 
+    behaviors {
+        mod_tap_behaviour: mod_tap_behaviour {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MOD_TAP_BEHAVIOUR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            flavor = "tap-unless-interrupted";
+            quick-tap-ms = <150>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -41,11 +54,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE  &kp N1  &kp N2     &kp N3    &kp N4    &kp N5                           &kp N6  &kp N7     &kp N8     &kp N9    &kp N0    &none
-&kp TAB    &kp Q   &kp W      &kp E     &kp R     &kp T                            &kp Y   &kp U      &kp I      &kp O     &kp P     &kp SINGLE_QUOTE
-&kp ESC    &kp A   &kp S      &kp D     &kp F     &kp G                            &kp H   &kp J      &kp K      &kp L     &kp SEMI  &kp BSPC
-&kp LSHFT  &kp Z   &kp X      &kp C     &kp V     &kp B   &kp C_PP     &kp C_MUTE  &kp N   &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-                   &kp LCTRL  &kp LALT  &kp LGUI  &mo 1   &kp ENTER    &kp SPACE   &mo 2   &kp LCTRL  &kp RALT   &kp RGUI
+&kp GRAVE  &kp N1  &kp N2     &kp N3    &kp N4    &kp N5                                                    &kp N6  &kp N7     &kp N8     &kp N9    &kp N0    &none
+&kp TAB    &kp Q   &kp W      &kp E     &kp R     &kp T                                                     &kp Y   &kp U      &kp I      &kp O     &kp P     &kp SINGLE_QUOTE
+&kp ESC    &kp A   &kp S      &kp D     &kp F     &kp G                                                     &kp H   &kp J      &kp K      &kp L     &kp SEMI  &kp BSPC
+&kp LSHFT  &kp Z   &kp X      &kp C     &kp V     &kp B   &kp C_PP     &kp C_MUTE                           &kp N   &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+                   &kp LCTRL  &kp LALT  &kp LGUI  &mo 1   &kp ENTER    &mod_tap_behaviour LEFT_SHIFT SPACE  &mo 2   &kp LCTRL  &kp RALT   &kp RGUI
             >;
 
             sensor-bindings =
